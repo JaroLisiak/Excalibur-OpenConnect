@@ -3,7 +3,7 @@ OpenConnect server using freeradius server to authenticate users towards Excalib
 
 "**Docker setup**" folder contains all necessary files to build and run **OpenConnect** and **Freeradius** servers in Docker containers.
 
-"**LXC containers - manual setup**" folder contains all necessary steps to manually install and configure **OpenConnect** and **Freeradius** servers in LXC containers.
+"**LXC containers - manual setup**" folder contains all steps to manually install and configure **OpenConnect** and **Freeradius** servers in LXC containers.
 
 
 
