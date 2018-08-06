@@ -33,18 +33,18 @@ Complete all following instructions:
 1. Download **excalibur** file from this repository to ***/etc/freeradius/sites-enabled/*** directory
 ```bash
 /etc/freeradius/sites-enabled/
-wget https://...
+wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/excalibur
 ```
 1. Download **excalibur-radius.pm** file from this repository to ***/etc/freeradius/*** directory
 ```bash
 cd /etc/freeradius/
-wget https://....
+wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/excalibur-radius.pm
 ```
 1. In file ***/etc/freeradius/modules/perl*** change **module = ${confdir}/example.pl** to **module = /etc/freeradius/excalibur-radius.pm**
 1. Download **rlm_perl.ini** file from this repository to ***/etc/freeradius/*** directory
 ```bash
 cd /etc/freeradius/
-wget https://....
+wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/rlm_perl.ini
 ```
 1. Add following lines to ***/etc/freeradius/clients.conf***file.
         client <OC-container-IP> {
