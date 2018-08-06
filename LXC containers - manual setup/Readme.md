@@ -28,31 +28,31 @@ apt update
 apt install libwww-perl libconfig-inifiles-perl libdata-dump-perl libtry-tiny-perl freeradius libjson-perl liblwp-protocol-https-perl freeradius
 ```
 Complete all following instructions:
-1. In file ***/etc/default/freeradius*** change **FREERADIUS_OPTIONS=""** to **FREERADIUS_OPTIONS="-t"**
-2. In file ***/etc/freeradius/users*** remove all lines and add the line with: **DEFAULT Auth-Type := Perl**
-3. Download **excalibur** file from this repository to ***/etc/freeradius/sites-enabled/*** directory
+1. Download **excalibur** file from this repository to ***/etc/freeradius/sites-enabled/*** directory
 ```bash
 /etc/freeradius/sites-enabled/
 wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/excalibur
 ```
-4. Download **excalibur-radius.pm** file from this repository to ***/etc/freeradius/*** directory
+2. Download **excalibur-radius.pm** file from this repository to ***/etc/freeradius/*** directory
 ```bash
 cd /etc/freeradius/
 wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/excalibur-radius.pm
 ```
-1. In file ***/etc/freeradius/modules/perl*** change **module = ${confdir}/example.pl** to **module = /etc/freeradius/excalibur-radius.pm**
-1. Download **rlm_perl.ini** file from this repository to ***/etc/freeradius/*** directory
+3. Download **rlm_perl.ini** file from this repository to ***/etc/freeradius/*** directory
 ```bash
 cd /etc/freeradius/
 wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/rlm_perl.ini
 ```
-1. Add following lines to ***/etc/freeradius/clients.conf***file.
+4. In file ***/etc/default/freeradius*** change **FREERADIUS_OPTIONS=""** to **FREERADIUS_OPTIONS="-t"**
+5. In file ***/etc/freeradius/users*** remove all lines and add the line with: **DEFAULT Auth-Type := Perl**
+6. In file ***/etc/freeradius/modules/perl*** change **module = ${confdir}/example.pl** to **module = /etc/freeradius/excalibur-radius.pm**
+7. Add following lines to ***/etc/freeradius/clients.conf*** file.
         client <OC-container-IP> {
         	ipaddr = <OC-container-IP>
         	shortname = OC server shortname
         	secret = <shared-secret>
         }
-1. Remove unnecessary files
+8. Remove unnecessary files
 ```bash
 rm /etc/freeradius/sites-enabled/default
 rm /etc/freeradius/sites-enabled/inner-tunnel
