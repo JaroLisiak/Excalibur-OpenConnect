@@ -8,6 +8,6 @@ OpenConnect server using freeradius server to authenticate users towards Excalib
 
 
 ## Schema
-Schema how it all works.
+Schema how it all works with docker.
 
 [![schema](https://github.com/JaroLisiak/Excalibur-OpenConnect/raw/master/LXC%20containers%20-%20manual%20setup/files/git_files/schema.png "schema")](https://github.com/JaroLisiak/Excalibur-OpenConnect/raw/master/LXC%20containers%20-%20manual%20setup/files/git_files/schema.png "schema")
