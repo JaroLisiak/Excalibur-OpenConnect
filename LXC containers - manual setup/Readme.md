@@ -29,13 +29,13 @@ apt install libwww-perl libconfig-inifiles-perl libdata-dump-perl libtry-tiny-pe
 ```
 Complete all following instructions:
 1. In file ***/etc/default/freeradius*** change **FREERADIUS_OPTIONS=""** to **FREERADIUS_OPTIONS="-t"**
-1. In file ***/etc/freeradius/users*** remove all lines and add the line with: **DEFAULT Auth-Type := Perl**
-1. Download **excalibur** file from this repository to ***/etc/freeradius/sites-enabled/*** directory
+2. In file ***/etc/freeradius/users*** remove all lines and add the line with: **DEFAULT Auth-Type := Perl**
+3. Download **excalibur** file from this repository to ***/etc/freeradius/sites-enabled/*** directory
 ```bash
 /etc/freeradius/sites-enabled/
 wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/excalibur
 ```
-1. Download **excalibur-radius.pm** file from this repository to ***/etc/freeradius/*** directory
+4. Download **excalibur-radius.pm** file from this repository to ***/etc/freeradius/*** directory
 ```bash
 cd /etc/freeradius/
 wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/excalibur-radius.pm
