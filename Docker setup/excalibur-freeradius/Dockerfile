@@ -40,7 +40,7 @@ RUN	rm /etc/freeradius/sites-enabled/inner-tunnel
 
 # Restart freeradius service
 RUN 	service freeradius stop
-CMD 	freeradius -f
+CMD 	freeradius -Xxxf
 
 
 

@@ -378,10 +378,10 @@ sub authenticate {
         $params{'state'} = pack 'H*', $hexState;
     }
     if ( exists( $RAD_REQUEST{'User-Name'} ) ) {
-        $params{"username"} = $RAD_REQUEST{'User-Name'};
+        $params{"user"} = $RAD_REQUEST{'User-Name'};
     }
     if ( exists( $RAD_REQUEST{'Stripped-User-Name'} ) ) {
-        $params{"username"} = $RAD_REQUEST{'Stripped-User-Name'};
+        $params{"user"} = $RAD_REQUEST{'Stripped-User-Name'};
     }
     if ( exists( $RAD_REQUEST{'User-Password'} ) ) {
         $params{"pass"} = $RAD_REQUEST{'User-Password'};
@@ -406,7 +406,7 @@ sub authenticate {
 
     &radiusd::radlog( Info, "Auth-Type: $auth_type" );
     &radiusd::radlog( Info, "url: $URL" );
-    &radiusd::radlog( Info, "username sent to back-end: $params{'username'}" );
+    &radiusd::radlog( Info, "user sent to back-end: $params{'user'}" );
     &radiusd::radlog( Info, "realm sent to back-end: $params{'realm'}" );
     &radiusd::radlog( Info, "resolver sent to back-end: $params{'resConf'}" );
     &radiusd::radlog( Info, "client sent to back-end: $params{'client'}" );
