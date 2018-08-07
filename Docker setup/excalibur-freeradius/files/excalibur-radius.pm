@@ -379,9 +379,11 @@ sub authenticate {
     }
     if ( exists( $RAD_REQUEST{'User-Name'} ) ) {
         $params{"user"} = $RAD_REQUEST{'User-Name'};
+		$params{"user"} =~ s/\\\\/\\/g;
     }
     if ( exists( $RAD_REQUEST{'Stripped-User-Name'} ) ) {
         $params{"user"} = $RAD_REQUEST{'Stripped-User-Name'};
+		$params{"user"} =~ s/\\\\/\\/g;
     }
     if ( exists( $RAD_REQUEST{'User-Password'} ) ) {
         $params{"pass"} = $RAD_REQUEST{'User-Password'};
