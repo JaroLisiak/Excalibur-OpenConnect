@@ -20,7 +20,8 @@ libprotobuf-c-dev \
 libhttp-parser-dev \
 libhttp-parser2.1 \
 make-guile \
-libtalloc-dev
+libtalloc-dev \
+htop
 
 ## Radcli installation ##
 
