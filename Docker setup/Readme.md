@@ -1,12 +1,19 @@
 
 # Excalibur Openconnect - Freeradius setup
 ## Init
+
 __Settings used in this example:__
+
 **Ocser container IP:** 172.18.0.2
+
 **Freeradius container IP:** 172.18.0.3
+
 **Shared secret:** testing123
+
 **Timeout:** 90
+
 **Excalibur API address:** https://staging.xclbr.com/api/pushka
+
 
 ---
 After cloning this repository & before first build you can change default settings:
