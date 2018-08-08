@@ -1,11 +1,41 @@
+
 # Excalibur Openconnect - Freeradius setup
 ## Init
-Create custom network interface **exc0** (172.18.0.0/24):
+__Settings used in this example:__
+**Ocser container IP:** 172.18.0.2
+**Freeradius container IP:** 172.18.0.3
+**Shared secret:** testing123
+**Timeout:** 90
+**Excalibur API address:** https://staging.xclbr.com/api/pushka
+
+---
+After cloning this repository & before first build you can change default settings:
+
+ - IP address of freeradius server:
+	 - file excalibur-openconnect/Dockerfile - lines 39, 40, 44
+ - IP address of OpenConnectServer (freeradius client):
+	 - file excalibur-freeradius/Dockerfile - line 35
+ - Timeout:
+	 -  file excalibur-freeradius/files/rlm_perl.ini - line 7
+ - Excalibur API address:
+	 - file excalibur-freeradius/files/rlm_perl.ini - line 2
+ - Shared-secret:
+	 - file excalibur-openconnect/Dockerfile - line 44
+	 - file excalibur-freeradius/Dockerfile - line 35
+
+If you want to use default settings used in this tutorial, you don't need to make any changes in cloned files.
+
+---
+Create custom network interface and name it **exc0** (172.18.0.0/24):
 ```bash
 docker network create --driver=bridge --subnet=172.18.0.0/24 exc0
 ```
+To check creating of network was successful use:
+```bash
+docker network ls
+```
 
-## Freeradius container
+# Freeradius container
 Move to **excalibur-freeradius** directory:
 
 ```bash
@@ -25,7 +55,7 @@ docker attach radius-container
 ```
 To leave attached container without terminating it, use <kbd>CTRL</kbd>+<kbd>P</kbd>+<kbd>Q</kbd>
 
-## Openconnect + radcli container
+# Openconnect + radcli container
 Move to **excalibur-openconnect** directory:
 
 ```bash
@@ -45,7 +75,11 @@ To attach the container and edit configuration enter:
 docker attach vpn-container
 ```
 To leave attached container without terminating it, use <kbd>CTRL</kbd>+<kbd>P</kbd>+<kbd>Q</kbd>
+# Result
+After successful installation it should looks like this:
+![alt text](https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/git_files/result.jpg "Result after successful setup")
 
+----
 ### Additional informations
 To remove ALL containers enter:
 ```bash
