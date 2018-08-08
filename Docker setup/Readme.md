@@ -1,4 +1,5 @@
 
+
 # Excalibur Openconnect - Freeradius setup
 ## Init
 
@@ -24,6 +25,7 @@ After cloning this repository & before first build you can change default settin
 	 - file excalibur-freeradius/Dockerfile - line 35
  - Timeout:
 	 -  file excalibur-freeradius/files/rlm_perl.ini - line 7
+	 -  /etc/ocserv/ocserv.conf - line **auth-timeout = 240** (default)
  - Excalibur API address:
 	 - file excalibur-freeradius/files/rlm_perl.ini - line 2
  - Shared-secret:
@@ -52,13 +54,19 @@ Build image from Dockerfile:
 ```bash
 docker build -t rad .
 ```
-Run container in background:
+Run container in background with default config:
 ```bash
-docker run --network=exc0 --ip 172.18.0.3 --name radius-container -itd rad
+docker run --network=exc0 --ip 172.18.0.3 --name radius-container -itd rad freeradius -f
 ```
-Container is now running in background with default configuration. To attach the container and edit configuration enter:
+You can check or change configuration inside the container:
 ```bash
+docker run --network=exc0 --ip 172.18.0.3 --name radius-container -itd rad bash
 docker attach radius-container
+#you are inside the container
+....
+# do whatever you want inside the container
+freeradius -f # run freeradius with new config
+# leave container with Ctrl + P + Q
 ```
 To leave attached container without terminating it, use <kbd>CTRL</kbd>+<kbd>P</kbd>+<kbd>Q</kbd>
 
@@ -72,14 +80,22 @@ Build image from Dockerfile:
 ```bash
 docker build -t vpn .
 ```
-Run container in background:
+Run container in background with default configuration:
 ```bash
 docker run -p 5009:443 --network=exc0 --ip 172.18.0.2 --cap-add=NET_ADMIN --device=/dev/net/tun --name vpn-container -itd vpn /bin/bash -c "cd /usr/local/src/ocserv/ocserv-0.12.1/src/; ocserv -f -c /usr/local/etc/ocserv/ocserv.config"
 ```
 Container is now running in background with default configuration. Openconnect container is litening on port 5009. IP address of openconnect server is 172.18.0.2. To reach oppenconnect from internet use your **public-IP:5009**
-To attach the container and edit configuration enter:
+You can check or change configuration inside the container:
 ```bash
+docker run -p 5009:443 --network=exc0 --ip 172.18.0.2 --cap-add=NET_ADMIN --device=/dev/net/tun --name vpn-container -itd vpn bash
 docker attach vpn-container
+# you are inside the container
+....
+# do whatever you want inside the container
+cd /usr/local/src/ocserv/ocserv-0.12.1/src/
+ocserv -f -c /usr/local/etc/ocserv/ocserv.config 
+# run Ocserv with new config
+# leave container with Ctrl + P + Q
 ```
 To leave attached container without terminating it, use <kbd>CTRL</kbd>+<kbd>P</kbd>+<kbd>Q</kbd>
 # Result
