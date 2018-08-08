@@ -1,5 +1,6 @@
 # LXC containers - manual setup
-! Important
+Important!
+
 To forward ocserv requests into OC container we need to use following command:
 ```bash
 iptables -t nat -A PREROUTING -p tcp --dport 5004 -j DNAT --to-destination <OC-container-IP>:443
@@ -30,18 +31,18 @@ apt install libwww-perl libconfig-inifiles-perl libdata-dump-perl libtry-tiny-pe
 Complete all following instructions:
 1. Download **excalibur** file from this repository to ***/etc/freeradius/sites-enabled/*** directory:
 ```bash
-/etc/freeradius/sites-enabled/
-wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/excalibur
+cd /etc/freeradius/sites-enabled/
+wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/Docker%20setup/excalibur-freeradius/files/excalibur
 ```
 2. Download **excalibur-radius.pm** file from this repository to ***/etc/freeradius/*** directory:
 ```bash
 cd /etc/freeradius/
-wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/excalibur-radius.pm
+wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/Docker%20setup/excalibur-freeradius/files/excalibur-radius.pm
 ```
 3. Download **rlm_perl.ini** file from this repository to ***/etc/freeradius/*** directory:
 ```bash
 cd /etc/freeradius/
-wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/LXC%20containers%20-%20manual%20setup/files/setup_files/rlm_perl.ini
+wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/Docker%20setup/excalibur-freeradius/files/rlm_perl.ini
 ```
 4. In file ***/etc/default/freeradius*** change **FREERADIUS_OPTIONS=""** to **FREERADIUS_OPTIONS="-t"**.
 5. In file ***/etc/freeradius/users*** remove all lines and add the line with: **DEFAULT Auth-Type := Perl**.
