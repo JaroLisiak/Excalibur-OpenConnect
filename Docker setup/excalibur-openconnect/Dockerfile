@@ -38,7 +38,7 @@ RUN 	make install
 RUN 	sed -i "s|#nas-identifier\tmy-server-name|nas-identifier excalibur-vpn-server|g" /etc/radcli/radiusclient.conf
 RUN 	sed -i "s|authserver \tlocalhost|authserver \t172.18.0.3|g" /etc/radcli/radiusclient.conf
 RUN 	sed -i "s|acctserver \tlocalhost|acctserver \t172.18.0.3|g" /etc/radcli/radiusclient.conf
-RUN 	sed -i "s|radius_timeout\t10|radius_timeout\t30|g" /etc/radcli/radiusclient.conf
+RUN 	sed -i "s|radius_timeout\t10|radius_timeout\t100|g" /etc/radcli/radiusclient.conf
 
 # Radius client (Openconnect server) + shared-secred
 RUN 	echo "172.18.0.3\ttesting123" >> /etc/radcli/servers
