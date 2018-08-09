@@ -133,16 +133,25 @@ Copy **dictionary** file to right location
 ```bash
 cp /usr/local/src/radcli/radcli-1.2.10/etc/dictionary /etc/radcli/dictionary
 ```
+Run following command to update dynamic linker:
+```bash
+ldconfig
+```
 #### Run
 Enter following lines to run Ocserv in debug mode
 ```bash
-ldconfig
 cd /usr/local/src/ocserv/ocserv-0.12.1/src/
 ./ocserv -d 9999 -f -c /usr/local/etc/ocserv/ocserv.config
 ```
-Ocserv is now running in debug mode. To run without debug mode remove **-d 9999** switch.
+Ocserv is now running in debug mode. When you exit container Ocserv will stop.
 
-Important!
+To run Ocserv in background run this command:
+```bash
+lxc exec  --mode=non-interactive OC -- /bin/bash -c "cd /usr/local/src/ocserv/ocserv-0.12.1/src/ && ./ocserv -f -c /usr/local/etc/ocserv/ocserv.config"
+```
+Now you can exit container and Ocserv will run inside the container.
+
+## Important!
 
 To forward ocserv requests into OC container we need to use following command:
 ```bash
