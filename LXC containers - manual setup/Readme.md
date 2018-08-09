@@ -6,7 +6,8 @@ Following commands creates 2 containers with Ubuntu 16.04. Container named "OC" 
 lxc launch ubuntu:16.04 OC
 lxc launch ubuntu:16.04 FR
 ```
-Make sure your LXD containers are available over the network (you answered "yes" during lxd init)
+Make sure your LXD containers are available over the network (you answered "yes" during lxd init).
+
 To show created containers enter:
 ```bash
 lxc list
