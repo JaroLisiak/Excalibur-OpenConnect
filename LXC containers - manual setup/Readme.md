@@ -98,7 +98,7 @@ acctserver <FR-container-IP>
 ```
 Add following line into ***/etc/radcli/servers*** file
 ```bash
-<FR-container-IP>																							<shared-secret>
+<FR-container-IP>				<shared-secret>
 ```
 Locate **radcli.pc** file
 ```bash
