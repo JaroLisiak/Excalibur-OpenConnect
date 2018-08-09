@@ -48,11 +48,13 @@ wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/D
 5. In file ***/etc/freeradius/users*** remove all lines and add the line with: **DEFAULT Auth-Type := Perl**.
 6. In file ***/etc/freeradius/modules/perl*** change **module = ${confdir}/example.pl** to **module = /etc/freeradius/excalibur-radius.pm**.
 7. Add following lines to ***/etc/freeradius/clients.conf*** file:
-        client <OC-container-IP> {
-        	ipaddr = <OC-container-IP>
-        	shortname = OC server shortname
-        	secret = <shared-secret>
-        }
+```
+client <OC-container-IP> {
+	ipaddr = <OC-container-IP>
+	shortname = OC server shortname
+	secret = <shared-secret>
+}
+```
 8. Remove unnecessary files:
 ```bash
 rm /etc/freeradius/sites-enabled/default
