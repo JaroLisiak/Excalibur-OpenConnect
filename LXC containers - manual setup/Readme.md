@@ -1,12 +1,5 @@
 # LXC containers - manual setup
-Important!
 
-To forward ocserv requests into OC container we need to use following command:
-```bash
-iptables -t nat -A PREROUTING -p tcp --dport 5004 -j DNAT --to-destination <OC-container-IP>:443
-```
-Make sure you use IP address of your OpenConnect container. 
-OpenConnect server is now listening on 5004 port.
 ## Containers
 Following commands creates 2 containers with Ubuntu 16.04. Container named "OC" for **OpenConnect server** and "FR" for **Freeradius server**.
 ```bash
@@ -48,11 +41,13 @@ wget https://raw.githubusercontent.com/JaroLisiak/Excalibur-OpenConnect/master/D
 5. In file ***/etc/freeradius/users*** remove all lines and add the line with: **DEFAULT Auth-Type := Perl**.
 6. In file ***/etc/freeradius/modules/perl*** change **module = ${confdir}/example.pl** to **module = /etc/freeradius/excalibur-radius.pm**.
 7. Add following lines to ***/etc/freeradius/clients.conf*** file:
-        client <OC-container-IP> {
-        	ipaddr = <OC-container-IP>
-        	shortname = OC server shortname
-        	secret = <shared-secret>
-        }
+```
+client <OC-container-IP> {
+	ipaddr = <OC-container-IP>
+	shortname = OC server shortname
+	secret = <shared-secret>
+}
+```
 8. Remove unnecessary files:
 ```bash
 rm /etc/freeradius/sites-enabled/default
@@ -96,7 +91,7 @@ acctserver <FR-container-IP>
 ```
 Add following line into ***/etc/radcli/servers*** file
 ```bash
-<FR-container-IP>																							<shared-secret>
+<FR-container-IP>				<shared-secret>
 ```
 Locate **radcli.pc** file
 ```bash
@@ -146,4 +141,12 @@ cd /usr/local/src/ocserv/ocserv-0.12.1/src/
 ```
 Ocserv is now running in debug mode. To run without debug mode remove **-d 9999** switch.
 
+Important!
+
+To forward ocserv requests into OC container we need to use following command:
+```bash
+iptables -t nat -A PREROUTING -p tcp --dport 5004 -j DNAT --to-destination <OC-container-IP>:443
+```
+Make sure you use IP address of your OpenConnect container. 
+OpenConnect server is now listening on 5004 port.
 
