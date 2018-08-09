@@ -1,12 +1,5 @@
 # LXC containers - manual setup
-Important!
 
-To forward ocserv requests into OC container we need to use following command:
-```bash
-iptables -t nat -A PREROUTING -p tcp --dport 5004 -j DNAT --to-destination <OC-container-IP>:443
-```
-Make sure you use IP address of your OpenConnect container. 
-OpenConnect server is now listening on 5004 port.
 ## Containers
 Following commands creates 2 containers with Ubuntu 16.04. Container named "OC" for **OpenConnect server** and "FR" for **Freeradius server**.
 ```bash
@@ -148,4 +141,12 @@ cd /usr/local/src/ocserv/ocserv-0.12.1/src/
 ```
 Ocserv is now running in debug mode. To run without debug mode remove **-d 9999** switch.
 
+Important!
+
+To forward ocserv requests into OC container we need to use following command:
+```bash
+iptables -t nat -A PREROUTING -p tcp --dport 5004 -j DNAT --to-destination <OC-container-IP>:443
+```
+Make sure you use IP address of your OpenConnect container. 
+OpenConnect server is now listening on 5004 port.
 
